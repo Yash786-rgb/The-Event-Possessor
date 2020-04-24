@@ -1,0 +1,148 @@
+<html>
+<head>
+    <style>
+        h1{ 
+            text-align:center;
+        }
+    table,tr,td,th{
+         border-collapse: collapse;
+         word-break:break-all;
+         text-align:center;
+         
+         border-right:2px solid black
+     }
+     @media (min-width:855px){ 
+     table{ 
+         width:70vw;
+         margin-left:17%;
+     }
+     .edit{ 
+         width:60px;
+     }
+     }
+     @media (max-width:855px){ 
+        table{ 
+         width:85vw;
+         margin-left:3%
+     }
+     .edit{ 
+         width:75px;
+     }
+     button{ 
+         font-size:10px;
+     }
+     }
+     
+     a{ 
+         color:#000;
+         text-decoration:none;
+     }
+     .button{ 
+         background-color: red;
+         border:none;
+         width:100%;
+         height:30px;
+         margin:0px;
+         color:white;
+     }
+     h3{ 
+    text-align:center;
+    margin-top:120px
+}
+.button1{ 
+    height:6%;
+    border-radius:20px;
+    font-size:20px;
+}
+
+a{ 
+    text-decoration: none;
+    font-size:20px
+}
+    </style>
+</head>
+<body>
+ <% var dateArray = []; %>
+ 
+
+
+   <%  var toShow ; %>
+<% if(f == ""){  %>
+    
+    <% }else{ %>
+        <% for(var m=0;m<f.events.length;m++){  %>
+            <%  dateArray[m] = f.events[m].date; %>
+            <% } %>
+            <% dateArray.sort(function(a,b){  %>
+                <%     return a-b; %>
+                <% }) %>
+        
+                <% for(var m=0;m<f.events.length;m++){  %>
+                    <%    f.events[m].date = dateArray[m] %>
+                    <% } %>
+
+
+
+        <% f.events.forEach(function(z){ %>
+                    <% if(z.event == ""){ %>
+                    <% }else{ %> 
+                    <%     toShow = true; %>
+                    <% } %>
+       <%  }) %>
+       <% if(toShow){ %>
+        <h1>Your Events</h1>
+       <% } %>
+
+ 
+
+        <% f.events.forEach(function(x){  %>
+            
+            <% if(x.event == ""){  %>
+                
+                <%  }else{ %>
+                    <table style="border:2px solid black">
+
+                    <tr>
+                            <td style = "text-align:center;" colspan = "3"><%=x.date.toDateString()%></td>
+                    </tr>
+                    <tr>
+                        <td style="border:2px solid black; width : 30px" >S.no</td>
+                        <td style="border:2px solid black; width : 200px">Event Title</td>
+                        <td style="border:2px solid black;width : 200px">Event Detail</td>
+                        
+                    </tr>
+
+                    <%  for(var i =0;i<x.event.length;i++){   %>
+                        <tr>
+                            <td style="border:2px solid black; width : 30px"><%=i+1%></td>
+                            <td style="border:2px solid black; width : 200px"><%= x.event[i].title%></td>
+                            <td style="border:2px solid black;width : 200px"><%= x.event[i].body%></td>
+                            <td class="edit"><a href = "/edit/<%=x.event[i]._id%>"><button class = "button">Edit</button></a></td>
+                            <td class = "edit"><a href = "/delete/<%=x.event[i]._id%>"><button class = "button">delete</button></a></td>
+                            <td class = "edit">
+                                
+                                
+                                
+                    <a href = "/send/<%=x.event[i]._id%>" ><button class = "button">send</button></a></td>
+                        </tr>
+                        
+
+                        <br/>
+                        
+                        
+                    
+                        <%   } %>
+                    </table>
+                   <%  }  %>
+                        
+         <% }) }%>
+         <br/>
+         <br/>
+         <h3><a href = "/addEvent"><button class = "button1">Add an Event</button></a></h3>
+         <h3><a href = "/"><button class = "button1">Home</button></a></h3>
+ <br/>
+ <br/>
+            
+</body>
+</html>
+

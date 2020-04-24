@@ -1,0 +1,61 @@
+<html>
+    <head>
+<style>
+    .text-area{ 
+        text-align :center
+    }
+     h3{ 
+    text-align:center;
+    margin-top:70px
+}
+.button1{ 
+    height:6%;
+    border-radius:20px;
+    width:90px
+}
+a{
+     text-decoration : none;
+}
+.button2{ 
+    background-color:green;
+    height:6%;
+    border-radius:20px;
+    width:90px;
+    color:white
+
+}
+input{ 
+    width:400px;
+    height:40px;
+    border-radius : 20px;
+}
+textarea{ 
+    border-radius : 20px
+}
+    
+</style>
+    </head>
+    <body>
+<form action="/send" method = "POST">
+    <div class = "text-area">
+    <p>Attende's email Id (if muptiple receiver,separate email ids by a comma)</p><input type = "text" placeholder = "email" name = "email">
+    <p>Title of Meeting</p><textarea cols = "40" rows = "8" placeholder = "title" name = "title" /><%=f.title%></textarea>
+    <br/>
+    <br/>
+    <p>Body of Meeting</p><textarea  cols = "40" rows = "8" placeholder = "body"  name ="body" /><%=f.body%></textarea>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <button class = "button2">Submit</button>
+</div>
+
+</form>
+<% if(toFill){  %>
+    <h3>Please Fill All the Fields</h3>
+<% } %>
+
+<h3><button class = "button1"><a href = "/showMyEvents">Go Back</a></button></h3>
+<h3><button class = "button1"><a href = "/">Home</a></button></h3>
+</body> 
+</html>

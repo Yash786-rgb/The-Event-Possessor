@@ -1,0 +1,40 @@
+ <html>
+<head>
+    <style>
+h1{ 
+     margin-top:60px;
+    font-size:50px;
+    text-align : center
+}
+h3{ 
+    text-align:center;
+    margin-top:100px
+}
+button{ 
+    height:10%;
+    border-radius:20px;
+    width:250px;
+    font-size:20px;
+}
+
+a{ 
+    text-decoration: none;
+
+}
+
+    </style>
+</head>
+<body>
+    <h1>Welcome to Event Possessor</h1>
+    <% if(!isLoggedIn){ %>
+        <h3><a href = "/auth/google"><button>Log In Using google</button></a></h3>
+        <br/>
+        <% }else{ %>
+            <h3><a href = "/logout"><button>Logout</button></a</h3>
+            <h3><a href = "/log"><button>Log In Using Another Gmail Id</button></a></h3>
+            <h3><a href = "/showMyEvents"><button>Show My Events</button></a></h3>
+            <h3><a href = "/addEvent"><button>Add an Event</button></a></h3>
+            <% } %>
+           
+        </body>
+            </html>
